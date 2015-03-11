@@ -1,0 +1,19 @@
+<h1><%= @album.name %></h1>
+<h2><%= @album.description %></h2>
+
+<h3>Previous Photos</h3>
+<% @photos.each do |photo| %>
+  <div>
+<!--     <a href="/albums/<%= @album.id %>/photos/<%= photo.id %>"><%= photo.name %></a> -->
+    <a href="/albums/<%= @album.id %>/photos/<%= photo.id %>">
+      <img src="<%= photo.file.url %>"></img>
+    </a>
+  </div>
+<% end %>
+
+<h3>Upload a Photo!</h3>
+<form action="/albums/<%= @album.id %>/photos" enctype="multipart/form-data" method="post">
+  <input type="text" name="photo[name]" placeholder="Photo Name">
+  <input type="file" name="image">
+  <input type="submit" name="Upload!">
+</form>
